@@ -64,10 +64,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     launchStatus.style.color = 'rgb(199, 37, 78)';
     if (fuelLevel < 10000) {
       fuelStatus.innerHTML = 'Fuel level too low for launch';
+    } else {
+      fuelStatus.innerHTML = 'Fuel level high enough for launch'
     }
     if (cargoLevel > 10000) {
       cargoStatus.innerHTML = 'Cargo mass too heavy for launch';
-    }
+    } else {cargoStatus.innerHTML = 'Cargo mass low enough for launch'}
   } else {
     launchStatus.innerHTML = 'Shuttle is Ready for Launch';
     launchStatus.style.color = 'rgb(65, 159, 106)';
@@ -83,13 +85,15 @@ return fetchPromise
 }
 
 
-let planets = myFetch()
-planets.then(function(json){
-  let data = json.json()
-data.then(data => data[0].name)
-})
+// let planets = myFetch()
+// planets.then(function(json){
+//   let data = json.json()
+// data.then(data => data[0].name)
+// })
 
-function pickPlanet(planets) {}
+function pickPlanet(planets) {
+  return planets[Math.floor(Math.random()* planets.length)]
+}
 
 try {
   module.exports.addDestinationInfo = addDestinationInfo;

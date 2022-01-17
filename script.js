@@ -1,5 +1,9 @@
 // Write your JavaScript code here!
 
+// const { pickPlanet } = require("./scriptHelper");
+
+// const { pickPlanet } = require("./scriptHelper");
+
 window.addEventListener('load', function () {
   window.addEventListener('submit', function (event) {
     let pilotName = this.document.getElementById('pilotName');
@@ -26,9 +30,8 @@ window.addEventListener('load', function () {
           listedPlanets = json.json()
 
          listedPlanets.then(
-             function(planet){
-                 let i =Math.floor(Math.random()*planet.length)
-                 planet = planet[i]
+             function(planets){
+                 let planet = pickPlanet(planets)
                  missionTarget.innerHTML = `                <h2>Mission Destination</h2>
                 <ol>
                     <li>Name: ${planet.name} </li>
