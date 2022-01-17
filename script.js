@@ -7,7 +7,7 @@ window.addEventListener('load', function () {
     let fuelLevel = this.document.getElementById('fuelLevel');
     let cargoMass = this.document.getElementById('cargoMass');
     let list = this.document.getElementById('faultyItems');
-
+    list.style.visibility = 'visible'
     formSubmission(
       this.document,
       list,
