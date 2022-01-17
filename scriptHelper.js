@@ -71,19 +71,23 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   } else {
     launchStatus.innerHTML = 'Shuttle is Ready for Launch';
     launchStatus.style.color = 'rgb(65, 159, 106)';
-
   }
-  // list.style.visibility = 'visible';
-
+  list.style.visibility = 'visible';
 }
 
-async function myFetch() {
-  let planetsReturned;
-
-  planetsReturned = await fetch().then(function (response) {});
-
-  return planetsReturned;
+async function myFetch() { 
+const fetchPromise = await fetch(
+  'https://handlers.education.launchcode.org/static/planets.json'
+)
+return fetchPromise
 }
+
+
+let planets = myFetch()
+planets.then(function(json){
+  let data = json.json()
+data.then(data => data[0].name)
+})
 
 function pickPlanet(planets) {}
 

@@ -7,7 +7,8 @@ window.addEventListener('load', function () {
     let fuelLevel = this.document.getElementById('fuelLevel');
     let cargoMass = this.document.getElementById('cargoMass');
     let list = this.document.getElementById('faultyItems');
-    list.style.visibility = 'visible'
+    let missionTarget = this.document.getElementById('missionTarget')
+    // list.style.visibility = 'visible'
     formSubmission(
       this.document,
       list,
@@ -19,15 +20,27 @@ window.addEventListener('load', function () {
 
     event.preventDefault();
   });
+     let listedPlanets;
+     let listedPlanetsResponse = myFetch();
+     listedPlanetsResponse.then(function (json) {
+          listedPlanets = json.json()
 
-  //    let listedPlanets;
-  //    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-  //    let listedPlanetsResponse;
-  //    listedPlanetsResponse.then(function (result) {
-  //        listedPlanets = result;
-  //        console.log(listedPlanets);
-  //    }).then(function () {
-  //        console.log(listedPlanets);
-  //        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-  //    })
+         listedPlanets.then(
+             function(planet){
+                 let i =Math.floor(Math.random()*planet.length)
+                 planet = planet[i]
+                 missionTarget.innerHTML = `                <h2>Mission Destination</h2>
+                <ol>
+                    <li>Name: ${planet.name} </li>
+                    <li>Diameter: ${planet.diameter} </li>
+                    <li>Star: ${planet.star}</li>
+                    <li>Distance from Earth: ${planet.distance} </li>
+                    <li>Number of Moons: ${planet.moons} </li>
+                </ol>
+                <img src="${planet.image}">`;
+             }
+             
+             )
+     })
+
 });
