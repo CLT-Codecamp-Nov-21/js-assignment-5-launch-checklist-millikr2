@@ -38,7 +38,6 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-  list.style.visibility = 'visible';
   let pilotStatus = document.getElementById('pilotStatus');
   let copilotStatus = document.getElementById('copilotStatus');
   let fuelStatus = document.getElementById('fuelStatus');
@@ -61,8 +60,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   copilotStatus.innerHTML = `Copilot ${copilot} is ready for launch`;
   let launchStatus = this.document.getElementById('launchStatus');
   if (fuelLevel < 10000 || cargoMass > 10000) {
-    launchStatus.innerHTML = 'Shuttle not ready for launch';
-    launchStatus.style.color = 'red';
+    launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
+    launchStatus.style.color = 'rgb(199, 37, 78)';
     if (fuelLevel < 10000) {
       fuelStatus.innerHTML = 'Fuel level too low for launch';
     }
@@ -70,9 +69,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
       cargoStatus.innerHTML = 'Cargo mass too high for launch';
     }
   } else {
-    launchStatus.innerHTML = 'Shuttle is ready for launch';
-    launchStatus.style.color = 'green';
+    launchStatus.innerHTML = 'Shuttle is Ready for Launch';
+    launchStatus.style.color = 'rgb(65, 159, 106)';
   }
+  list.style.visibility = 'visible';
 
 }
 
