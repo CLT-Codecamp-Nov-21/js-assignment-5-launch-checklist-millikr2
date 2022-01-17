@@ -32,13 +32,13 @@ window.addEventListener('load', function () {
          listedPlanets.then(
              function(planets){
                  let planet = pickPlanet(planets)
-                 missionTarget.innerHTML = `                <h2>Mission Destination</h2>
+                 missionTarget.innerHTML = `<h2>MissionDestination</h2>
                 <ol>
-                    <li>Name: ${planet.name} </li>
-                    <li>Diameter: ${planet.diameter} </li>
-                    <li>Star: ${planet.star}</li>
-                    <li>Distance from Earth: ${planet.distance} </li>
-                    <li>Number of Moons: ${planet.moons} </li>
+                    <li>Name:${planet.name} </li>
+                    <li>Diameter:${planet.diameter} </li>
+                    <li>Star:${planet.star}</li>
+                    <li>Distance from Earth:${planet.distance} </li>
+                    <li>Number of Moons:${planet.moons} </li>
                 </ol>
                 <img src="${planet.image}">`;
              }
