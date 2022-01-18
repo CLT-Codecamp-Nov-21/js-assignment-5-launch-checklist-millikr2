@@ -47,7 +47,7 @@ function validateInput(testInput) {
   }
 }
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+function formSubmission(window, list, pilot, copilot, fuelLevel, cargoLevel) {
   let pilotStatus = document.getElementById('pilotStatus');
   let copilotStatus = document.getElementById('copilotStatus');
   let fuelStatus = document.getElementById('fuelStatus');
@@ -86,38 +86,18 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   }
   list.style.visibility = 'visible';
 }
-let arr
-console.log(arr)
+
 async function myFetch() { 
-let fetchPromise = await fetch(
+  try {
+    let planetsReturned = await fetch(
   'https://handlers.education.launchcode.org/static/planets.json'
 )
-// myFetch()
-// console.log(fetchPromise.json())
-let data = await fetchPromise.json()
-console.log(data, 'data')
-let promise = fetchPromise.json()
-console.log(fetchPromise)
-// console.log(promise)
-promise.then(function(planets){
-  console.log(planets)
-  arr = planets
-  // return data
-})
-return data
-// promise => console.log(promise))
-// console.log(promise)
-// let fetcher = fetchPromise
-// fetcher.then(data => console.log(data.json()))
-// return fetchPromise
+ planetsReturned = await planetsReturned.json()
+return planetsReturned
+  } catch (error) {
+    
+  }
 }
-
-
-// let planets = myFetch()
-// planets.then(function(json){
-//   let data = json.json()
-// data.then(data => data[0].name)
-// })
 
 function pickPlanet(planets) {
   return planets[Math.floor(Math.random()* planets.length)]
