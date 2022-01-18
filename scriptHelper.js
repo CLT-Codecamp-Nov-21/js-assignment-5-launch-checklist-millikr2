@@ -13,6 +13,16 @@ function addDestinationInfo(
   moons,
   imageUrl
 ) {
+  let missionTarget = document.getElementById('missionTarget')
+                 missionTarget.innerHTML = `<h2>MissionDestination</h2>
+                <ol>
+                    <li>Name:${name}</li>
+                    <li>Diameter:${diameter}</li>
+                    <li>Star:${star}</li>
+                    <li>Distance from Earth:${distance}</li>
+                    <li>Number of Moons:${moons}</li>
+                </ol>
+                <img src="${imageUrl}">`;
   // Here is the HTML formatting for our mission target div.
   /*
                 <h2>Mission Destination</h2>
@@ -76,12 +86,30 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   }
   list.style.visibility = 'visible';
 }
-
+let arr
+console.log(arr)
 async function myFetch() { 
-const fetchPromise = await fetch(
+let fetchPromise = await fetch(
   'https://handlers.education.launchcode.org/static/planets.json'
 )
-return fetchPromise
+// myFetch()
+// console.log(fetchPromise.json())
+let data = await fetchPromise.json()
+console.log(data, 'data')
+let promise = fetchPromise.json()
+console.log(fetchPromise)
+// console.log(promise)
+promise.then(function(planets){
+  console.log(planets)
+  arr = planets
+  // return data
+})
+return data
+// promise => console.log(promise))
+// console.log(promise)
+// let fetcher = fetchPromise
+// fetcher.then(data => console.log(data.json()))
+// return fetchPromise
 }
 
 
